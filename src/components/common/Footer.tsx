@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Pill, Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
+
 import {
-  Pill,
-  Phone,
-  Mail,
-  MapPin,
-} from "lucide-react";
-import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+} from "react-icons/fa";
+
 const FOOTER_LINKS = {
   Product: [
     { label: "Browse Medicines", href: "/shop" },
@@ -16,17 +18,19 @@ const FOOTER_LINKS = {
     { label: "Featured Items", href: "/shop" },
     { label: "New Arrivals", href: "/shop" },
   ],
+
+  Company: [
+    { label: "About Us", href: "#" },
+    { label: "Careers", href: "#" },
+    { label: "Our Mission", href: "#" },
+    { label: "Contact", href: "#" },
+  ],
+
   Support: [
     { label: "Help Center", href: "#" },
     { label: "Track Order", href: "/orders" },
     { label: "Return Policy", href: "#" },
-    { label: "Contact Us", href: "#" },
-  ],
-  "For Sellers": [
-    { label: "Become a Seller", href: "/register" },
-    { label: "Seller Dashboard", href: "/seller/dashboard" },
-    { label: "Seller Guidelines", href: "#" },
-    { label: "Seller Support", href: "#" },
+    { label: "Privacy Policy", href: "#" },
   ],
 };
 
@@ -37,121 +41,153 @@ const SOCIAL_LINKS = [
   { icon: FaYoutube, href: "#", label: "Youtube" },
 ];
 
-const containerVariants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-};
-
 export function Footer() {
   return (
-    <footer className="bg-slate-900 text-slate-300">
-      {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+    <footer className="relative mt-24 overflow-hidden border-t border-slate-200 bg-white">
 
-          {/* Brand Column */}
-          <div className="lg:col-span-2 space-y-5">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-9 h-9 bg-gradient-to-br from-[#6B4FE0] to-[#2D9D78] rounded-xl flex items-center justify-center">
-                <Pill className="w-5 h-5 text-white" />
+      {/* background blur */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-20 left-0 h-72 w-72 rounded-full bg-indigo-100 blur-3xl opacity-40" />
+        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-violet-100 blur-3xl opacity-40" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* top section */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-14 py-20">
+
+          {/* BRAND */}
+          <div className="lg:col-span-2">
+
+            <Link
+              href="/"
+              className="inline-flex items-center gap-3 group"
+            >
+              <div className="w-11 h-11 rounded-2xl bg-indigo-600 flex items-center justify-center shadow-lg shadow-indigo-200 transition-transform duration-300 group-hover:scale-105">
+                <Pill className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold text-white">
-                <span className="text-[#a78bfa]">Medi</span>
-                <span className="text-[#6ee7b7]">Store</span>
-              </span>
+
+              <div>
+                <h2 className="text-2xl font-bold tracking-tight text-slate-900 leading-none">
+                  MediStore
+                </h2>
+
+                <p className="text-xs uppercase tracking-[0.25em] text-slate-500 mt-1">
+                  Trusted Pharmacy
+                </p>
+              </div>
             </Link>
 
-            <p className="text-sm leading-relaxed text-slate-400 max-w-xs">
-              Your trusted online pharmacy for authentic over-the-counter
-              medicines. Fast delivery, best prices, and 24/7 customer support.
+            <p className="mt-6 max-w-md text-sm leading-7 text-slate-600">
+              MediStore delivers authentic healthcare products and medicines
+              with fast delivery, trusted quality, and reliable customer
+              support across Bangladesh.
             </p>
 
-            {/* Contact Info */}
-            <div className="space-y-2.5">
-              {[
-                { icon: Phone, text: "+880 1234-567890" },
-                { icon: Mail, text: "support@medistore.com" },
-                { icon: MapPin, text: "Dhaka, Bangladesh" },
-              ].map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-3 text-sm">
-                  <div className="w-7 h-7 rounded-lg bg-slate-800 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-3.5 h-3.5 text-[#a78bfa]" />
-                  </div>
-                  <span className="text-slate-400">{text}</span>
+            {/* contact cards */}
+            <div className="mt-8 space-y-4">
+
+              <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-3 shadow-sm">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50">
+                  <Phone className="h-5 w-5 text-indigo-600" />
                 </div>
-              ))}
+
+                <div>
+                  <p className="text-xs text-slate-500">Phone</p>
+                  <p className="text-sm font-medium text-slate-800">
+                    +880 1234-567890
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-3 shadow-sm">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50">
+                  <Mail className="h-5 w-5 text-indigo-600" />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-500">Email</p>
+                  <p className="text-sm font-medium text-slate-800">
+                    support@medistore.com
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-sm px-4 py-3 shadow-sm">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50">
+                  <MapPin className="h-5 w-5 text-indigo-600" />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-500">Location</p>
+                  <p className="text-sm font-medium text-slate-800">
+                    Dhaka, Bangladesh
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-3 pt-1">
+            {/* socials */}
+            <div className="mt-8 flex items-center gap-3">
+
               {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
                 <motion.a
                   key={label}
                   href={href}
-                  aria-label={label}
-                  whileHover={{ scale: 1.15, y: -2 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-8 h-8 rounded-lg bg-slate-800 hover:bg-[#6B4FE0] flex items-center justify-center transition-colors duration-200"
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-600 shadow-sm transition-all duration-300 hover:border-indigo-200 hover:bg-indigo-600 hover:text-white"
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="h-4 w-4" />
                 </motion.a>
               ))}
             </div>
           </div>
 
-          {/* Link Columns */}
+          {/* LINKS */}
           {Object.entries(FOOTER_LINKS).map(([title, links]) => (
-            <div key={title} className="space-y-4">
-              <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
+            <div key={title}>
+              <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-slate-900">
                 {title}
               </h3>
-              <motion.ul
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-                className="space-y-2.5"
-              >
+
+              <ul className="mt-6 space-y-4">
                 {links.map((link) => (
-                  <motion.li key={link.label} variants={itemVariants}>
+                  <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="text-sm text-slate-400 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block"
+                      className="group inline-flex items-center gap-2 text-sm text-slate-600 transition-colors duration-200 hover:text-indigo-600"
                     >
-                      {link.label}
+                      <span>{link.label}</span>
+
+                      <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
                     </Link>
-                  </motion.li>
+                  </li>
                 ))}
-              </motion.ul>
+              </ul>
             </div>
           ))}
         </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-slate-500">
+        {/* bottom */}
+        <div className="border-t border-slate-200 py-6">
+
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+
+            <p className="text-sm text-slate-500">
               © {new Date().getFullYear()} MediStore. All rights reserved.
             </p>
-            <div className="flex items-center gap-6">
-              {["Terms of Service", "Privacy Policy", "Cookie Policy"].map(
-                (item) => (
-                  <Link
-                    key={item}
-                    href="#"
-                    className="text-xs text-slate-500 hover:text-slate-300 transition-colors"
-                  >
-                    {item}
-                  </Link>
-                )
-              )}
+
+            <div className="flex flex-wrap items-center gap-6">
+              {["Terms", "Privacy", "Cookies"].map((item) => (
+                <Link
+                  key={item}
+                  href="#"
+                  className="text-sm text-slate-500 transition-colors duration-200 hover:text-indigo-600"
+                >
+                  {item}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
