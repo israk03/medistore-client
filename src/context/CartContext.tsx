@@ -9,7 +9,7 @@ import {
   useMemo,
 } from "react";
 
-import { CartItem, Medicine } from "@/types";
+import { CartItem, Medicine } from "@/types/auth.types";
 
 interface CartContextValue {
   items: CartItem[];

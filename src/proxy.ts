@@ -1,3 +1,4 @@
+// src/proxy.ts
 import axios from "axios";
 
 const axiosInstance = axios.create({
@@ -8,7 +9,6 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use((config) => {
   if (typeof window !== "undefined") {
     const token = localStorage.getItem("medistore_token");
-    config.headers = config.headers || {};
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -19,14 +19,17 @@ axiosInstance.interceptors.request.use((config) => {
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
+    // Only redirect on 401 for non-auth routes
     if (
       error.response?.status === 401 &&
-      typeof window !== "undefined"
+      typeof window !== "undefined" &&
+      !error.config?.url?.includes("/auth/")
     ) {
       localStorage.removeItem("medistore_token");
       localStorage.removeItem("medistore_user");
       window.location.href = "/login";
     }
+    // Always re-throw so catch blocks in services get the full error
     return Promise.reject(error);
   }
 );

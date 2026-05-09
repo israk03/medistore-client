@@ -1,5 +1,24 @@
 export type Role = "CUSTOMER" | "SELLER" | "ADMIN";
 
+
+
+export interface AuthResponse {
+  success: boolean;
+  statusCode: number;
+  message: string;
+  data?: {
+    user: User;
+    token: string;
+  };
+}
+
+export type RegisterPayload = {
+  name: string;
+  email: string;
+  password: string;
+  role: "CUSTOMER" | "SELLER";
+};
+
 export type OrderStatus =
   | "PLACED"
   | "PROCESSING"

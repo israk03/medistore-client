@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { formatPrice, cn } from "@/lib/utils";
 import { toast } from "sonner";
-import { Medicine } from "@/types";
+import { Medicine } from "@/types/auth.types";
 import { useCart } from "@/context/CartContext";
 
 // Static featured medicines for homepage display
