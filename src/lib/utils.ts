@@ -6,8 +6,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatPrice(price: number): string {
-  return `৳${price.toFixed(2)}`;
+export function formatPrice(price: number | string) {
+  const num = typeof price === "string" ? Number(price) : price;
+
+  if (isNaN(num)) return "৳0";
+
+  return `৳${num.toFixed(2)}`;
 }
 
 export function formatDate(date: string): string {
