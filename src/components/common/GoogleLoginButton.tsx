@@ -46,10 +46,10 @@ export function GoogleLoginButton({
 
             const destination =
               user.role === "ADMIN"
-                ? "/admin/dashboard"
+                ? "/dashboard"
                 : user.role === "SELLER"
-                ? "/seller/dashboard"
-                : "/customer/dashboard";
+                ? "/dashboard"
+                : "/dashboard";
 
             router.push(destination);
           } catch (err: any) {

@@ -145,8 +145,8 @@ export default function RegisterPage() {
 
     const destination =
   user.role === "SELLER"
-    ? "/seller/dashboard"
-    : "/customer/dashboard";
+    ? "/dashboard"
+    : "/dashboard";
 
     router.push(destination);
   } catch (err: any) {

@@ -28,9 +28,9 @@ const NAV_LINKS = [
 ];
 
 const getDashboardLink = (role: string) => {
-  if (role === "ADMIN") return "/admin/dashboard";
-  if (role === "SELLER") return "/seller/dashboard";
-  return "/customer/dashboard";
+  if (role === "ADMIN") return "/dashboard";
+  if (role === "SELLER") return "/dashboard";
+  return "/dashboard";
 };
 
 export function Navbar() {

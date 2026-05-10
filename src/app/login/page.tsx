@@ -83,10 +83,10 @@ export default function LoginPage() {
 
       const redirectPath =
         role === ROLES.ADMIN
-          ? "/admin/dashboard"
+          ? "/dashboard"
           : role === ROLES.SELLER
-          ? "/seller/dashboard"
-          : "/customer/dashboard";
+          ? "/dashboard"
+          : "/dashboard";
 
       router.push(redirectPath);
     } catch (err: any) {
