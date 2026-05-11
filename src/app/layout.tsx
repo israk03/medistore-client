@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="font-sans">
+      <body className="font-sans" suppressHydrationWarning>
         {/* Google Identity Services script */}
         <Script
           src="https://accounts.google.com/gsi/client"
