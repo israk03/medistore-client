@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ShoppingCart, Menu, X, Pill, User,
   LogOut, LayoutDashboard, ChevronDown,
@@ -245,7 +245,7 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      <div>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
@@ -313,7 +313,7 @@ export function Navbar() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </div>
     </motion.header>
   );
 }

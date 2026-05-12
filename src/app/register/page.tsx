@@ -3,7 +3,7 @@ import { GoogleLoginButton } from "@/components/common/GoogleLoginButton";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion} from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -257,7 +257,7 @@ export default function RegisterPage() {
               />
 
               {/* Seller Info */}
-              <AnimatePresence>
+              <div>
                 {selectedRole === "SELLER" && (
                   <motion.div
                     initial={{
@@ -288,7 +288,7 @@ export default function RegisterPage() {
                     </div>
                   </motion.div>
                 )}
-              </AnimatePresence>
+              </div>
 
               {/* Name */}
               <FormField

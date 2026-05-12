@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Pill, LayoutGrid, AlertCircle, RefreshCw, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -139,7 +139,7 @@ export default function ShopPage() {
         <MedicineFilters filters={filters} onChange={handleFilterChange} />
 
         {/* Error State */}
-        <AnimatePresence>
+        <div>
           {error && (
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
@@ -160,7 +160,7 @@ export default function ShopPage() {
               </Button>
             </motion.div>
           )}
-        </AnimatePresence>
+        </div>
 
         {/* Results Grid */}
         {loading ? (

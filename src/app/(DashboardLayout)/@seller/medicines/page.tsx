@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Plus,
   Pencil,
@@ -143,94 +143,99 @@ export default function SellerMedicinesPage() {
               </tr>
             </thead>
             <tbody>
-              {loading ? (
-                Array.from({ length: 4 }).map((_, i) => (
-                  <tr key={i}><td colSpan={4} className="p-2"><Skeleton className="h-20 w-full rounded-2xl" /></td></tr>
-                ))
-              ) : filtered.length === 0 ? (
-                <tr>
-                  <td colSpan={4} className="py-20 text-center">
-                    <div className="inline-flex h-16 w-16 items-center justify-center rounded-3xl bg-slate-50 text-slate-200 mb-4">
-                      <Package className="h-8 w-8" />
-                    </div>
-                    <p className="font-bold text-slate-400">No matching medicines found</p>
-                  </td>
-                </tr>
-              ) : (
-                <AnimatePresence mode="popLayout">
-                  {filtered.map((medicine) => (
-                    <motion.tr
-                      layout
-                      key={medicine.id}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      className="group bg-white hover:bg-slate-50/80 transition-colors"
-                    >
-                      <td className="rounded-l-2xl px-4 py-4 border-y border-l border-slate-50">
-                        <div className="flex items-center gap-4">
-                          <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100 border border-slate-50">
-                            {medicine.imageUrl ? (
-                              <Image src={medicine.imageUrl} alt={medicine.name} fill className="object-cover" />
-                            ) : (
-                              <div className="flex h-full w-full items-center justify-center text-slate-300">
-                                <Layers className="h-5 w-5" />
-                              </div>
-                            )}
-                          </div>
-                          <div>
-                            <p className="text-sm font-black text-slate-900">{medicine.name}</p>
-                            <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{medicine.manufacturer}</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="border-y border-slate-50 px-4 py-4">
-                        <p className="text-sm font-black text-indigo-600">{formatPrice(medicine.price)}</p>
-                        <p className="text-[10px] font-medium text-slate-400">Price per unit</p>
-                      </td>
-                      <td className="border-y border-slate-50 px-4 py-4">
-                        <div className="flex flex-col gap-1">
-                          <span className={cn(
-                            "text-xs font-black",
-                            medicine.stock === 0 ? "text-rose-500" : medicine.stock < 10 ? "text-amber-500" : "text-emerald-500"
-                          )}>
-                            {medicine.stock === 0 ? "OUT OF STOCK" : `${medicine.stock} UNITS`}
-                          </span>
-                          <div className="h-1.5 w-24 rounded-full bg-slate-100 overflow-hidden">
-                            <div 
-                              className={cn(
-                                "h-full rounded-full transition-all",
-                                medicine.stock === 0 ? "bg-rose-500 w-0" : medicine.stock < 10 ? "bg-amber-500 w-1/3" : "bg-emerald-500 w-full"
-                              )} 
-                            />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="rounded-r-2xl border-y border-r border-slate-50 px-4 py-4 text-right">
-                        <div className="flex justify-end gap-1">
-                          <Button 
-                            variant="ghost" 
-                            size="icon" 
-                            onClick={() => handleEdit(medicine)}
-                            className="h-9 w-9 rounded-xl text-slate-400 hover:bg-indigo-50 hover:text-indigo-600"
-                          >
-                            <Pencil className="h-4 w-4" />
-                          </Button>
-                          <Button 
-                            variant="ghost" 
-                            size="icon" 
-                            onClick={() => setDeleteTarget(medicine)}
-                            className="h-9 w-9 rounded-xl text-slate-400 hover:bg-rose-50 hover:text-rose-600"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </td>
-                    </motion.tr>
-                  ))}
-                </AnimatePresence>
-              )}
-            </tbody>
+  {loading ? (
+    Array.from({ length: 4 }).map((_, i) => (
+      <tr key={i}>
+        <td colSpan={4} className="p-2">
+          <Skeleton className="h-20 w-full rounded-2xl" />
+        </td>
+      </tr>
+    ))
+  ) : filtered.length === 0 ? (
+    <tr>
+      <td colSpan={4} className="py-20 text-center">
+        <div className="inline-flex h-16 w-16 items-center justify-center rounded-3xl bg-slate-50 text-slate-200 mb-4">
+          <Package className="h-8 w-8" />
+        </div>
+        <p className="font-bold text-slate-400">No matching medicines found</p>
+      </td>
+    </tr>
+  ) : (
+    /* ✅ Use a Fragment here, not a Div */
+    <>
+      {filtered.map((medicine: Medicine) => (
+        <motion.tr
+          layout
+          key={medicine.id}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          className="group bg-white hover:bg-slate-50/80 transition-colors"
+        >
+          <td className="rounded-l-2xl px-4 py-4 border-y border-l border-slate-50">
+            <div className="flex items-center gap-4">
+              <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100 border border-slate-50">
+                {medicine.imageUrl ? (
+                  <Image src={medicine.imageUrl} alt={medicine.name} fill className="object-cover" />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-slate-300">
+                    <Layers className="h-5 w-5" />
+                  </div>
+                )}
+              </div>
+              <div>
+                <p className="text-sm font-black text-slate-900">{medicine.name}</p>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{medicine.manufacturer}</p>
+              </div>
+            </div>
+          </td>
+          <td className="border-y border-slate-50 px-4 py-4">
+            <p className="text-sm font-black text-indigo-600">{formatPrice(medicine.price)}</p>
+            <p className="text-[10px] font-medium text-slate-400">Price per unit</p>
+          </td>
+          <td className="border-y border-slate-50 px-4 py-4">
+            <div className="flex flex-col gap-1">
+              <span className={cn(
+                "text-xs font-black",
+                medicine.stock === 0 ? "text-rose-500" : medicine.stock < 10 ? "text-amber-500" : "text-emerald-500"
+              )}>
+                {medicine.stock === 0 ? "OUT OF STOCK" : `${medicine.stock} UNITS`}
+              </span>
+              <div className="h-1.5 w-24 rounded-full bg-slate-100 overflow-hidden">
+                <div 
+                  className={cn(
+                    "h-full rounded-full transition-all",
+                    medicine.stock === 0 ? "bg-rose-500 w-0" : medicine.stock < 10 ? "bg-amber-500 w-1/3" : "bg-emerald-500 w-full"
+                  )} 
+                />
+              </div>
+            </div>
+          </td>
+          <td className="rounded-r-2xl border-y border-r border-slate-50 px-4 py-4 text-right">
+            <div className="flex justify-end gap-1">
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={() => handleEdit(medicine)}
+                className="h-9 w-9 rounded-xl text-slate-400 hover:bg-indigo-50 hover:text-indigo-600"
+              >
+                <Pencil className="h-4 w-4" />
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={() => setDeleteTarget(medicine)}
+                className="h-9 w-9 rounded-xl text-slate-400 hover:bg-rose-50 hover:text-rose-600"
+              >
+                <Trash2 className="h-4 w-4" />
+              </Button>
+            </div>
+          </td>
+        </motion.tr>
+      ))}
+    </>
+  )}
+</tbody>
           </table>
         </div>
       </div>

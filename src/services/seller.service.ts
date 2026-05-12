@@ -1,5 +1,5 @@
 import axiosInstance from "@/proxy";
-import { ApiResponse, Medicine, Order } from "@/types/auth.types";
+import { ApiResponse, Medicine, Order, OrderStatus } from "@/types/auth.types";
 
 const BASE = "/seller";
 

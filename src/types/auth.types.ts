@@ -32,6 +32,7 @@ export interface User {
   email: string;
   role: Role;
   isBanned: boolean;
+  address?: string;
   createdAt: string;
 }
 
@@ -68,6 +69,11 @@ export interface OrderItem {
     name: string;
     imageUrl: string | null;
     manufacturer: string;
+    seller: {
+      id: string;
+      name: string;
+      email: string;
+    };
   };
 }
 
@@ -79,7 +85,7 @@ export interface Order {
   createdAt: string;
   updatedAt: string;
   orderItems: OrderItem[];
-  customer?: { id: string; name: string; email: string };
+  customer?: { id: string; name: string; email: string, address: string };
 }
 
 export interface Review {

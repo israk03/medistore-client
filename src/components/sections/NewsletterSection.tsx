@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Mail, CheckCircle2, ArrowRight, Loader2, Sparkles } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -61,7 +61,7 @@ export function NewsletterSection() {
             </div>
 
             <div className="max-w-md mx-auto">
-              <AnimatePresence mode="wait">
+              <div>
                 {submitted ? (
                   <motion.div
                     key="success"
@@ -111,7 +111,7 @@ export function NewsletterSection() {
                     </Button>
                   </motion.form>
                 )}
-              </AnimatePresence>
+              </div>
             </div>
 
             <p className="text-white/40 text-xs font-bold uppercase tracking-widest">

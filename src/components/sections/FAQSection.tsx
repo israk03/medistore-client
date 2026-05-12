@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
-import { Plus, Minus, HelpCircle, MessageCircle, User, Store } from "lucide-react";
+import { motion, Variants } from "framer-motion";
+import { Plus, Minus, MessageCircle, User, Store } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const CUSTOMER_FAQS = [
@@ -125,7 +125,7 @@ export function FAQSection() {
                 </div>
               </button>
 
-              <AnimatePresence>
+              <div>
                 {openIndex === index && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
@@ -139,7 +139,7 @@ export function FAQSection() {
                     </div>
                   </motion.div>
                 )}
-              </AnimatePresence>
+              </div>
             </motion.div>
           ))}
         </motion.div>

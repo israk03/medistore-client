@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Search, SlidersHorizontal, X, RotateCcw } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -91,7 +91,7 @@ export function MedicineFilters({ filters, onChange }: MedicineFiltersProps) {
       </div>
 
       {/* Expanded Filter Panel */}
-      <AnimatePresence>
+      <div>
         {showFilters && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -178,7 +178,7 @@ export function MedicineFilters({ filters, onChange }: MedicineFiltersProps) {
             )}
           </motion.div>
         )}
-      </AnimatePresence>
+      </div>
     </div>
   );
 }

@@ -110,7 +110,7 @@ export default function SellerDashboardPage() {
           
           <div className="flex gap-3">
             <Button asChild className="h-12 rounded-2xl bg-white font-black text-slate-900 hover:bg-slate-100">
-              <Link href="/seller/orders">
+              <Link href="/orders">
                 Process Orders <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -140,7 +140,7 @@ export default function SellerDashboardPage() {
               <h3 className="font-black tracking-tight text-slate-900">Incoming Orders</h3>
             </div>
             <Button variant="ghost" size="sm" asChild className="text-xs font-bold text-indigo-600">
-              <Link href="/seller/orders">View Ledger</Link>
+              <Link href="/orders">View Ledger</Link>
             </Button>
           </div>
 

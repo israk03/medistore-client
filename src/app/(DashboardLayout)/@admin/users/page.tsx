@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Users,
   Search,
@@ -223,7 +223,7 @@ export default function AdminUsersPage() {
           <div className="divide-y">
 
             {/* FIX 3: JSX structure corrected */}
-            <AnimatePresence>
+            <div>
               {filteredUsers.map((user) => (
                 <motion.div
                   key={user.id}
@@ -252,7 +252,7 @@ export default function AdminUsersPage() {
                   </Button>
                 </motion.div>
               ))}
-            </AnimatePresence>
+            </div>
 
           </div>
         )}

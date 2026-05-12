@@ -1,17 +1,15 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import {  motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   ShoppingCart,
   ArrowRight,
-  ShoppingBag,
   Tag,
   Truck,
   Shield,
   Trash2,
-  ChevronRight,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -144,13 +142,13 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <AnimatePresence mode="popLayout">
+              <div>
                 <div className="space-y-4">
                   {items.map((item) => (
                     <CartItem key={item.medicine.id} item={item} />
                   ))}
                 </div>
-              </AnimatePresence>
+              </div>
             </div>
 
             {/* 3. Summary Sidebar */}

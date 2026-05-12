@@ -1,1 +1,3 @@
-export { default } from "./dashboard/page";
+export default function Default() {
+  return null;
+}

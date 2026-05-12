@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -307,12 +307,11 @@ ${values.note ? `— Note: ${values.note}` : ""}
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Success Screen */}
-        <AnimatePresence>
+        <div>
           {placedOrderId && (
             <OrderSuccess orderId={placedOrderId} />
           )}
-        </AnimatePresence>
-
+        </div>
         {/* Checkout Form */}
         {!placedOrderId && (
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
