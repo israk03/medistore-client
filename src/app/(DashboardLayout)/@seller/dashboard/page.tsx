@@ -115,7 +115,7 @@ export default function SellerDashboardPage() {
               </Link>
             </Button>
             <Button asChild variant="outline" className="h-12 rounded-2xl border-white/10 bg-white/5 font-bold text-white hover:bg-white/10">
-              <Link href="/seller/medicines">Audit Inventory</Link>
+              <Link href="/medicines">Audit Inventory</Link>
             </Button>
           </div>
         </div>
@@ -228,7 +228,7 @@ export default function SellerDashboardPage() {
             </div>
 
             <Button asChild variant="outline" className="mt-6 w-full h-11 rounded-xl border-slate-100 font-bold text-slate-600 hover:bg-slate-50">
-              <Link href="/seller/medicines">Restock All</Link>
+              <Link href="/medicines">Restock All</Link>
             </Button>
           </div>
 
