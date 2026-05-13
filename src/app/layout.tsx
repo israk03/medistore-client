@@ -8,8 +8,19 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "MediStore — Your Trusted Online Medicine Shop",
-  description: "Browse and purchase over-the-counter medicines.",
+  title: "MediStore",
+  description: "Securely manage pharmacy stock, track medicine fulfillment, and monitor real-time sales with MediStore's professional inventory ledger system.",
+  keywords: ["Pharmacy Management", "Medicine Inventory", "Order Ledger", "Next.js Pharma App", "MediStore"],
+  // OpenGraph helps when sharing the link on LinkedIn/Discord
+  openGraph: {
+    title: "MediStore | Pharmacy Inventory Ledger",
+    description: "Professional-grade medicine stock and order fulfillment tracking.",
+    type: "website",
+  },
+  // Use your new icon here
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
