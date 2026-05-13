@@ -9,10 +9,13 @@ import {
   ArrowLeft,
   User,
   Calendar,
+  SearchX, Pill,
   Send,
   Plus,
   Minus,
 } from "lucide-react";
+import Link from "next/link";
+
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -167,13 +170,44 @@ export default function MedicineDetailPage() {
     );
   }
 
-  if (!medicine) {
-    return (
-      <div className="pt-32 text-center">
-        Medicine not found
+if (!medicine) {
+  return (
+    <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 text-center">
+      {/* Visual Composition */}
+      <div className="relative mb-6">
+        <div className="h-24 w-24 bg-slate-50 rounded-full flex items-center justify-center">
+          <SearchX className="h-10 w-10 text-slate-300" />
+        </div>
+        <div className="absolute -bottom-1 -right-1 h-8 w-8 bg-white shadow-sm rounded-lg flex items-center justify-center border border-slate-100">
+          <Pill className="h-4 w-4 text-indigo-500 rotate-45" />
+        </div>
       </div>
-    );
-  }
+
+      {/* Content */}
+      <div className="space-y-2 max-w-sm">
+        <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+          Medicine Not Found
+        </h2>
+        <p className="text-sm font-medium text-slate-500 leading-relaxed">
+          We couldn&apos;t find the specific medication you&apos;re looking for. It may be out of stock or renamed.
+        </p>
+      </div>
+
+      {/* Action */}
+      <div className="mt-8">
+        <Link href="/shop">
+          <Button 
+            variant="outline" 
+            className="h-12 px-6 rounded-xl border-slate-200 font-bold text-slate-600 hover:bg-slate-50 hover:text-indigo-600 hover:border-indigo-200 transition-all gap-2"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Back to Pharmacy Shop
+          </Button>
+        </Link>
+      </div>
+    </div>
+  );
+}
 
   return (
     <div className="pt-16 min-h-screen bg-slate-50">
