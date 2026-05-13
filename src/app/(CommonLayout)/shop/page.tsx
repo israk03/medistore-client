@@ -32,7 +32,7 @@ const LIMIT = 12;
 // Match the card's rounded-auth aesthetic
 function MedicineCardSkeleton() {
   return (
-    <div className="bg-white rounded-[2rem] border border-slate-100 overflow-hidden p-5 space-y-4">
+    <div className="bg-white rounded-4xl border border-slate-100 overflow-hidden p-5 space-y-4">
       <Skeleton className="h-40 w-full rounded-2xl bg-slate-50" />
       <div className="space-y-2">
         <Skeleton className="h-4 w-3/4 bg-slate-50" />

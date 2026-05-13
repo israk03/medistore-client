@@ -87,7 +87,7 @@ export default function OrderDetailPage() {
       <div className="pt-24 min-h-screen bg-slate-50/50">
         <div className="mx-auto max-w-3xl space-y-6 px-4">
           <Skeleton className="h-6 w-24 rounded-full" />
-          <Skeleton className="h-[400px] rounded-[2.5rem]" />
+          <Skeleton className="h-100 rounded-[2.5rem]" />
         </div>
       </div>
     );
@@ -121,9 +121,9 @@ export default function OrderDetailPage() {
             >
               <div className="relative flex items-center justify-between">
                 {/* Connecting Line */}
-                <div className="absolute left-0 top-[18px] h-0.5 w-full bg-slate-100" />
+                <div className="absolute left-0 top-4.5 h-0.5 w-full bg-slate-100" />
                 <div 
-                  className="absolute left-0 top-[18px] h-0.5 bg-indigo-500 transition-all duration-1000" 
+                  className="absolute left-0 top-4.5 h-0.5 bg-indigo-500 transition-all duration-1000" 
                   style={{ width: `${(currentStepIndex / (STATUS_STEPS.length - 1)) * 100}%` }}
                 />
 

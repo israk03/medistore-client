@@ -140,7 +140,11 @@ export default function MedicineFormModal({
             {/* Row 2: Description */}
             <div className="space-y-2">
               <Label className="text-sm font-bold text-slate-700 ml-1">Description</Label>
-              <Textarea {...register("description")} placeholder="Dosage and indications..." className="rounded-xl border-slate-200 min-h-[100px] resize-none focus:ring-violet-500" />
+              <Textarea
+  {...register("description")}
+  placeholder="Dosage and indications..."
+  className="rounded-xl border-slate-200 min-h-25 resize-none focus:ring-violet-500"
+/>
             </div>
 
             {/* Row 3: Price & Category (Fills the 'empty' space) */}
@@ -160,7 +164,7 @@ export default function MedicineFormModal({
         {categories.find((cat) => cat.id === watch("categoryId"))?.name || "Select a category"}
       </span>
                   </SelectTrigger>
-                  <SelectContent className="bg-white border border-slate-200 shadow-2xl rounded-xl z-[100] min-w-[200px]">
+                  <SelectContent className="bg-white border border-slate-200 shadow-2xl rounded-xl z-100 min-w-50">
                     {categories.map((cat) => (
                       <SelectItem key={cat.id} value={cat.id} className="py-3 font-medium focus:bg-violet-50 focus:text-violet-700 cursor-pointer">
                         {cat.name}

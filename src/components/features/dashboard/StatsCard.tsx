@@ -69,7 +69,7 @@ export function StatsCard({
       animate={{ opacity: 1, scale: 1 }}
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
       className={cn(
-        "group relative overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm transition-all hover:shadow-xl hover:shadow-slate-200/50",
+        "group relative overflow-hidden rounded-4xl border border-slate-100 bg-white p-6 shadow-sm transition-all hover:shadow-xl hover:shadow-slate-200/50",
         className
       )}
     >

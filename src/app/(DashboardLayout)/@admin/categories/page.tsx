@@ -111,7 +111,7 @@ export default function AdminCategoriesPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* CREATE SIDEBAR */}
         <div className="lg:col-span-4 sticky top-6">
-          <div className="bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm">
+          <div className="bg-white p-6 rounded-4xl border border-slate-100 shadow-sm">
             <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">
               Create Category
             </h3>
@@ -152,7 +152,7 @@ export default function AdminCategoriesPage() {
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {Array.from({ length: 6 }).map((_, i) => (
-                <Skeleton key={i} className="h-24 rounded-[1.5rem]" />
+                <Skeleton key={i} className="h-24 rounded-3xl" />
               ))}
             </div>
           ) : filtered.length === 0 ? (
@@ -170,7 +170,7 @@ export default function AdminCategoriesPage() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
-                    className="p-5 bg-white border border-slate-100 rounded-[1.5rem] group hover:border-indigo-100 hover:shadow-md transition-all flex justify-between items-center"
+                    className="p-5 bg-white border border-slate-100 rounded-3xl group hover:border-indigo-100 hover:shadow-md transition-all flex justify-between items-center"
                   >
                     <div>
                       <p className="font-black text-slate-900 text-sm leading-tight">{cat.name}</p>
@@ -194,7 +194,7 @@ export default function AdminCategoriesPage() {
 
       {/* DELETE MODAL */}
       <Dialog open={!!deleteTarget} onOpenChange={() => setDeleteTarget(null)}>
-        <DialogContent className="rounded-[2rem] border-none shadow-2xl p-8">
+        <DialogContent className="rounded-4xl border-none shadow-2xl p-8">
           <DialogHeader>
             <DialogTitle className="text-2xl font-black text-slate-900">Purge Category</DialogTitle>
             <DialogDescription className="text-slate-500 font-medium py-2">

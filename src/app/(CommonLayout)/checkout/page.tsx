@@ -465,7 +465,7 @@ ${values.note ? `— Note: ${values.note}` : ""}
 
                     {/* COD */}
                     <div className="flex items-start gap-3 bg-[#6B4FE0]/5 border border-[#6B4FE0]/15 rounded-xl p-4">
-                      <Tag className="w-5 h-5 text-[#6B4FE0] flex-shrink-0 mt-0.5" />
+                      <Tag className="w-5 h-5 text-[#6B4FE0] shrink-0 mt-0.5" />
 
                       <div>
                         <p className="text-sm font-semibold text-[#6B4FE0]">
@@ -525,7 +525,7 @@ ${values.note ? `— Note: ${values.note}` : ""}
                       className="flex items-center justify-between text-sm"
                     >
                       <div className="flex items-center gap-2 min-w-0">
-                        <span className="text-lg flex-shrink-0">
+                        <span className="text-lg shrink-0">
                           💊
                         </span>
 
@@ -540,7 +540,7 @@ ${values.note ? `— Note: ${values.note}` : ""}
                         </div>
                       </div>
 
-                      <span className="font-semibold text-slate-700 flex-shrink-0 ml-2">
+                      <span className="font-semibold text-slate-700 shrink-0 ml-2">
                         {formatPrice(
                           Number(
                             (

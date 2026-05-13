@@ -111,7 +111,7 @@ export default function AdminDashboardPage() {
 
   if (!stats) {
     return (
-      <div className="flex min-h-[400px] flex-col items-center justify-center text-slate-400">
+      <div className="flex min-h-100 flex-col items-center justify-center text-slate-400">
         <Activity className="mb-4 h-12 w-12 opacity-20" />
 
         <p className="font-bold">
@@ -134,7 +134,7 @@ export default function AdminDashboardPage() {
         <div className="relative flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
 
           <div className="flex items-center gap-4">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-400 to-rose-600 shadow-lg shadow-rose-500/20">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-rose-400 to-rose-600 shadow-lg shadow-rose-500/20">
               <ShieldCheck className="h-8 w-8 text-white" />
             </div>
 
@@ -203,7 +203,7 @@ export default function AdminDashboardPage() {
         {/* ORDER PIPELINE */}
         <motion.div
           {...fadeUp}
-          className="rounded-[2rem] border border-slate-100 bg-white p-8 shadow-sm lg:col-span-3"
+          className="rounded-4xl border border-slate-100 bg-white p-8 shadow-sm lg:col-span-3"
         >
           <div className="mb-8 flex items-center justify-between">
 
@@ -299,7 +299,7 @@ export default function AdminDashboardPage() {
         >
 
           {/* EFFICIENCY CARD */}
-          <div className="rounded-[2rem] bg-indigo-600 p-8 text-white shadow-xl shadow-indigo-100">
+          <div className="rounded-4xl bg-indigo-600 p-8 text-white shadow-xl shadow-indigo-100">
 
             <div className="mb-6 flex items-center justify-between">
 
@@ -342,7 +342,7 @@ export default function AdminDashboardPage() {
           </div>
 
           {/* PLATFORM MIX */}
-          <div className="rounded-[2rem] border border-slate-100 bg-white p-8">
+          <div className="rounded-4xl border border-slate-100 bg-white p-8">
 
             <h3 className="mb-6 text-sm font-black uppercase tracking-widest text-slate-400">
               Platform Mix
@@ -405,9 +405,9 @@ function AdminDashboardSkeleton() {
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
 
-        <Skeleton className="h-[450px] rounded-[2rem] lg:col-span-3" />
+        <Skeleton className="h-112.5 rounded-4xl lg:col-span-3" />
 
-        <Skeleton className="h-[450px] rounded-[2rem] lg:col-span-2" />
+        <Skeleton className="h-112.5 rounded-4xl lg:col-span-2" />
       </div>
     </div>
   );

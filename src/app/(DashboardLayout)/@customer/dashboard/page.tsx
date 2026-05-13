@@ -63,7 +63,7 @@ export default function CustomerDashboardPage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-indigo-600 via-violet-600 to-emerald-500 p-8 text-white shadow-2xl shadow-indigo-200"
+        className="relative overflow-hidden rounded-[2.5rem] bg-linear-to-br from-indigo-600 via-violet-600 to-emerald-500 p-8 text-white shadow-2xl shadow-indigo-200"
       >
         {/* Abstract Background Decoration */}
         <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
@@ -105,7 +105,7 @@ export default function CustomerDashboardPage() {
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {loading ? (
-            Array.from({ length: 4 }).map((_, i) => <Skeleton key={i} className="h-40 rounded-[2rem]" />)
+            Array.from({ length: 4 }).map((_, i) => <Skeleton key={i} className="h-40 rounded-4xl" />)
           ) : (
             <>
               <StatsCard title="Total Volume" value={stats.total} icon={ShoppingBag} color="purple" subtitle="All requests" />
@@ -129,7 +129,7 @@ export default function CustomerDashboardPage() {
           </Link>
         </div>
 
-        <div className="overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-sm transition-all hover:shadow-md">
+        <div className="overflow-hidden rounded-4xl border border-slate-100 bg-white shadow-sm transition-all hover:shadow-md">
           {loading ? (
             <div className="space-y-4 p-8">
               {Array.from({ length: 3 }).map((_, i) => <Skeleton key={i} className="h-16 rounded-2xl" />)}
@@ -175,7 +175,7 @@ export default function CustomerDashboardPage() {
                       <Badge className={cn("rounded-full px-3 py-1 font-black text-[9px] uppercase tracking-widest", getStatusColor(order.status))}>
                         {order.status}
                       </Badge>
-                      <span className="min-w-[80px] text-right font-black text-slate-900">
+                      <span className="min-w-20 text-right font-black text-slate-900">
                         {formatPrice(order.totalAmount)}
                       </span>
                       <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-400 group-hover:bg-indigo-600 group-hover:text-white transition-colors">

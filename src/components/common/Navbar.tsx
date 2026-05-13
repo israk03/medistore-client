@@ -87,7 +87,7 @@ export function Navbar() {
             <motion.div
               whileHover={{ rotate: 20, scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="w-9 h-9 bg-gradient-to-br from-[#6B4FE0] to-[#2D9D78] rounded-xl flex items-center justify-center shadow-lg"
+              className="w-9 h-9 bg-linear-to-br from-[#6B4FE0] to-[#2D9D78] rounded-xl flex items-center justify-center shadow-lg"
             >
               <Pill className="w-5 h-5 text-white" />
             </motion.div>
@@ -138,13 +138,13 @@ export function Navbar() {
         "flex items-center gap-2 border-slate-200 hover:border-[#6B4FE0] hover:text-[#6B4FE0] cursor-pointer"
       )}
     >
-      <div className="w-6 h-6 bg-gradient-to-br from-[#6B4FE0] to-[#2D9D78] rounded-full flex items-center justify-center">
+      <div className="w-6 h-6 bg-linear-to-br from-[#6B4FE0] to-[#2D9D78] rounded-full flex items-center justify-center">
         <span className="text-white text-xs font-bold">
           {user.name.charAt(0).toUpperCase()}
         </span>
       </div>
 
-      <span className="max-w-[100px] truncate text-sm">
+      <span className="max-w-25 truncate text-sm">
         {user.name.split(" ")[0]}
       </span>
 

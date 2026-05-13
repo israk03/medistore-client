@@ -97,7 +97,7 @@ export function MedicineFilters({ filters, onChange }: MedicineFiltersProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="p-6 bg-white/80 backdrop-blur-md rounded-[2rem] border border-slate-100 shadow-xl shadow-indigo-100/20"
+            className="p-6 bg-white/80 backdrop-blur-md rounded-4xl border border-slate-100 shadow-xl shadow-indigo-100/20"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Category Dropdown */}

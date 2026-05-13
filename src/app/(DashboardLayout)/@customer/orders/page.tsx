@@ -163,7 +163,7 @@ export default function CustomerOrdersPage() {
               >
                 <Link
                   href={`/orders/${order.id}`}
-                  className="group relative w-full bg-white border border-slate-100 rounded-[2rem] p-6 text-left hover:border-indigo-200 transition-all hover:shadow-xl hover:shadow-indigo-50/50 flex flex-col sm:flex-row sm:items-center gap-6 block"
+                  className="group relative w-full bg-white border border-slate-100 rounded-4xl p-6 text-left hover:border-indigo-200 transition-all hover:shadow-xl hover:shadow-indigo-50/50 flex flex-col sm:flex-row sm:items-center gap-6"
                 >
                   {/* LEFT */}
                   <div className="flex-1 space-y-4">

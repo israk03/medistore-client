@@ -108,7 +108,7 @@ export default function AdminOrdersPage() {
       </div>
 
       {/* 3. TABLE */}
-      <div className="bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-4xl border border-slate-100 shadow-sm overflow-hidden">
         {/* Column Headers */}
         <div className="hidden md:grid grid-cols-12 gap-4 px-8 py-4 bg-slate-50/50 border-b border-slate-100 text-[10px] font-black uppercase tracking-widest text-slate-400">
           <div className="col-span-2">Order Ref</div>

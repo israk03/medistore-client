@@ -34,7 +34,7 @@ export function MedicineCard({ medicine }: { medicine: Medicine }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -10 }}
-      className="cursor-pointer bg-white rounded-[2rem] border border-slate-100 overflow-hidden group"
+      className="cursor-pointer bg-white rounded-4xl border border-slate-100 overflow-hidden group"
     >
       {/* Header */}
       <div className="relative h-48 bg-slate-50 flex items-center justify-center">

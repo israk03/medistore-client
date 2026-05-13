@@ -121,7 +121,7 @@ export default function SellerOrdersPage() {
       <div className="space-y-4">
         {loading ? (
           <div className="space-y-4">
-            {Array.from({ length: 3 }).map((_, i) => <Skeleton key={i} className="h-48 w-full rounded-[2rem]" />)}
+            {Array.from({ length: 3 }).map((_, i) => <Skeleton key={i} className="h-48 w-full rounded-4xl" />)}
           </div>
         ) : filtered.length === 0 ? (
           <div className="py-32 text-center bg-white rounded-[3rem] border border-dashed border-slate-200">
@@ -209,7 +209,7 @@ export default function SellerOrdersPage() {
                               <ChevronDown className="h-4 w-4" />
                             </Button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end" className="bg-white rounded-2xl border-slate-200 shadow-2xl min-w-[200px] p-2 z-[100]">
+                          <DropdownMenuContent align="end" className="bg-white rounded-2xl border-slate-200 shadow-2xl min-w-50 p-2 z-100">
                             {nextStatuses.map((status) => (
                               <DropdownMenuItem
                                 key={status}

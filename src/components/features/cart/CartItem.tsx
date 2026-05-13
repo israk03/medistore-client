@@ -37,13 +37,13 @@ export function CartItem({ item, className }: CartItemProps) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
       className={cn(
-        "group relative flex items-center gap-4 bg-white rounded-[1.5rem] p-4 border border-slate-100 hover:border-indigo-100 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300",
+        "group relative flex items-center gap-4 bg-white rounded-3xl p-4 border border-slate-100 hover:border-indigo-100 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300",
         className
       )}
     >
       {/* 1. Visual Icon with Category Accent */}
       <div className="relative w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center text-4xl shrink-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-br from-indigo-50/50 to-transparent" />
         <span className="relative z-10 drop-shadow-sm group-hover:scale-110 transition-transform duration-300">
           {emoji}
         </span>

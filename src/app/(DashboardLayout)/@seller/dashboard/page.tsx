@@ -131,7 +131,7 @@ export default function SellerDashboardPage() {
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-6">
         {/* 4. RECENT ORDERS TABLE */}
-        <div className="lg:col-span-4 rounded-[2rem] border border-slate-100 bg-white p-2 shadow-sm">
+        <div className="lg:col-span-4 rounded-4xl border border-slate-100 bg-white p-2 shadow-sm">
           <div className="flex items-center justify-between p-6">
             <div className="flex items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-50 text-slate-400">
@@ -195,7 +195,7 @@ export default function SellerDashboardPage() {
 
         {/* 5. CRITICAL STOCK ALERTS */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="rounded-[2rem] border border-slate-100 bg-white p-6 shadow-sm">
+          <div className="rounded-4xl border border-slate-100 bg-white p-6 shadow-sm">
             <div className="mb-6 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-50 text-rose-500">
@@ -233,7 +233,7 @@ export default function SellerDashboardPage() {
           </div>
 
           {/* Quick Stats Summary */}
-          <div className="rounded-[2rem] bg-indigo-600 p-6 text-white">
+          <div className="rounded-4xl bg-indigo-600 p-6 text-white">
             <div className="flex items-center gap-3 mb-4">
               <Clock className="h-4 w-4 text-indigo-200" />
               <span className="text-[10px] font-black uppercase tracking-widest text-indigo-100">Live Health</span>

@@ -100,7 +100,7 @@ export function DashboardSidebar() {
         <Link href="/" className="flex items-center gap-3">
           <div
             className={cn(
-              "h-10 w-10 flex items-center justify-center rounded-2xl bg-gradient-to-br",
+              "h-10 w-10 flex items-center justify-center rounded-2xl bg-linear-to-br",
               currentTheme.gradient
             )}
           >

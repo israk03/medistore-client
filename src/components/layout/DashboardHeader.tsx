@@ -97,9 +97,9 @@ export function DashboardHeader() {
             
             <div className={cn(
               "flex h-10 w-10 items-center justify-center rounded-2xl font-bold text-white shadow-lg",
-              user.role === "ADMIN" ? "bg-gradient-to-br from-rose-500 to-red-600 shadow-rose-100" :
-              user.role === "SELLER" ? "bg-gradient-to-br from-amber-400 to-orange-500 shadow-amber-100" :
-              "bg-gradient-to-br from-indigo-500 to-violet-600 shadow-indigo-100"
+              user.role === "ADMIN" ? "bg-linear-to-br from-rose-500 to-red-600 shadow-rose-100" :
+              user.role === "SELLER" ? "bg-linear-to-br from-amber-400 to-orange-500 shadow-amber-100" :
+              "bg-linear-to-br from-indigo-500 to-violet-600 shadow-indigo-100"
             )}>
               {user.name?.charAt(0).toUpperCase()}
             </div>

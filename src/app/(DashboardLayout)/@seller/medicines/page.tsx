@@ -151,7 +151,7 @@ export default function SellerMedicinesPage() {
               ) : filtered.length === 0 ? (
                 <tr>
                   <td colSpan={4} className="py-32 text-center">
-                    <div className="inline-flex h-20 w-20 items-center justify-center rounded-[2rem] bg-slate-50 text-slate-200 mb-6">
+                    <div className="inline-flex h-20 w-20 items-center justify-center rounded-4xl bg-slate-50 text-slate-200 mb-6">
                       <Package className="h-10 w-10" />
                     </div>
                     <p className="font-black text-slate-300 uppercase tracking-widest text-xs">No records found in catalogue</p>
@@ -168,9 +168,9 @@ export default function SellerMedicinesPage() {
                       exit={{ opacity: 0, scale: 0.95 }}
                       className="group bg-white hover:shadow-md hover:shadow-indigo-500/5 transition-all cursor-default"
                     >
-                      <td className="rounded-l-[2rem] px-6 py-5 border-y border-l border-slate-50">
+                      <td className="rounded-l-4xl px-6 py-5 border-y border-l border-slate-50">
                         <div className="flex items-center gap-5">
-                          <div className="relative h-14 w-14 flex-shrink-0 overflow-hidden rounded-2xl bg-slate-50 border border-slate-100">
+                          <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl bg-slate-50 border border-slate-100">
                             {medicine.imageUrl ? (
                               <Image src={medicine.imageUrl} alt={medicine.name} fill className="object-cover" />
                             ) : (
@@ -209,7 +209,7 @@ export default function SellerMedicinesPage() {
                           </div>
                         </div>
                       </td>
-                      <td className="rounded-r-[2rem] border-y border-r border-slate-50 px-6 py-5 text-right">
+                      <td className="rounded-r-4xl border-y border-r border-slate-50 px-6 py-5 text-right">
                         <div className="flex justify-end gap-2">
                           <Button 
                             variant="ghost" 
@@ -249,7 +249,7 @@ export default function SellerMedicinesPage() {
       <Dialog open={!!deleteTarget} onOpenChange={() => setDeleteTarget(null)}>
         <DialogContent className="rounded-[2.5rem] border-none p-10">
           <DialogHeader className="items-center text-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-[1.5rem] bg-rose-50 text-rose-500 mb-6">
+            <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-rose-50 text-rose-500 mb-6">
               <AlertCircle className="h-10 w-10" />
             </div>
             <DialogTitle className="text-2xl font-black text-slate-900">De-register Medicine?</DialogTitle>

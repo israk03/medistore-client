@@ -121,7 +121,7 @@ export default function ProfilePage() {
 
           <div className="relative flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
             <div className="relative group">
-              <div className="flex h-24 w-24 items-center justify-center rounded-[2rem] bg-gradient-to-br from-indigo-500 via-violet-500 to-emerald-400 text-4xl font-black text-white shadow-xl shadow-indigo-100">
+              <div className="flex h-24 w-24 items-center justify-center rounded-4xl bg-linear-to-br from-indigo-500 via-violet-500 to-emerald-400 text-4xl font-black text-white shadow-xl shadow-indigo-100">
                 {initial}
               </div>
               <button className="absolute -bottom-1 -right-1 flex h-8 w-8 items-center justify-center rounded-xl bg-white text-slate-400 shadow-lg ring-4 ring-white transition-all hover:text-indigo-600 hover:scale-110">

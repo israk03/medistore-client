@@ -142,7 +142,7 @@ export function MedicineFormModal({
 
   return (
     <Dialog open={open} onOpenChange={(v) => !v && onClose()}>
-      <DialogContent className="max-w-2xl overflow-hidden rounded-[2rem] p-0 border-none shadow-2xl">
+      <DialogContent className="max-w-2xl overflow-hidden rounded-4xl p-0 border-none shadow-2xl">
         {/* Visual Identity Header */}
         <div className="flex items-center justify-between bg-slate-900 px-8 py-6 text-white">
           <div className="flex items-center gap-3">

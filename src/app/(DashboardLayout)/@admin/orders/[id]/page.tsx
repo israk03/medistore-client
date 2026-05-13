@@ -174,7 +174,7 @@ function DetailSkeleton() {
     <div className="max-w-5xl space-y-8 pb-20 animate-pulse">
       <div className="h-6 w-32 bg-slate-200 rounded-lg" />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 h-[500px] bg-slate-100 rounded-[2.5rem]" />
+        <div className="lg:col-span-2 h-125 bg-slate-100 rounded-[2.5rem]" />
         <div className="space-y-6">
           <div className="h-48 bg-slate-100 rounded-[2.5rem]" />
           <div className="h-64 bg-slate-100 rounded-[2.5rem]" />

@@ -157,7 +157,7 @@ export default function MedicineDetailPage() {
   if (loading) {
     return (
       <div className="pt-24 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10">
-        <Skeleton className="h-[450px] rounded-3xl" />
+        <Skeleton className="h-112.5 rounded-3xl" />
         <div className="space-y-4">
           <Skeleton className="h-10 w-3/4" />
           <Skeleton className="h-20 w-full" />
