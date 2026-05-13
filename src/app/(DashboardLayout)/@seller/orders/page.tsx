@@ -3,12 +3,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Package,
-  Filter,
-  ChevronDown,
-  Search,
-  CheckCircle2,
-  MapPin,
+  Package, Filter, ChevronDown, Search,
+  CheckCircle2, MapPin, Clock, User, ShoppingBag
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -16,17 +12,10 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Input } from "@/components/ui/input";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 import { sellerService } from "@/services/seller.service";
@@ -94,131 +83,137 @@ export default function SellerOrdersPage() {
 
   return (
     <div className="mx-auto max-w-7xl space-y-8 pb-10 px-4">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      {/* Header */}
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between pt-8">
         <div>
-          <h1 className="text-3xl font-black text-slate-900 tracking-tight">Order Ledger</h1>
-          <p className="text-sm text-slate-500 font-medium">Manage fulfillment and track delivery routes.</p>
+          <h1 className="text-4xl font-black text-slate-900 tracking-tight">Order Ledger</h1>
+          <p className="text-base text-slate-500 font-medium mt-1">Real-time fulfillment tracking.</p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="relative w-full sm:w-72">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+        <div className="flex flex-wrap items-center gap-4">
+          <div className="relative w-full sm:w-80">
+            <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
             <Input
               placeholder="Search ID or Customer..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="h-11 rounded-xl pl-10 border-slate-200 bg-white focus:ring-indigo-500"
+              className="h-14 rounded-2xl pl-12 border-slate-200 bg-white focus:ring-indigo-500 shadow-sm text-base"
             />
           </div>
 
           <Select value={statusFilter} onValueChange={(v) => setStatusFilter(v ?? "ALL")}>
-            <SelectTrigger className="h-11 w-48 rounded-xl border-slate-200 bg-white shadow-sm">
-              <div className="flex items-center gap-2 text-slate-600">
-                <Filter className="h-3.5 w-3.5" />
+            <SelectTrigger className="h-14 w-52 rounded-2xl border-slate-200 bg-white shadow-sm font-bold text-slate-700">
+              <div className="flex items-center gap-2">
+                <Filter className="h-4 w-4 text-indigo-500" />
                 <SelectValue placeholder="Filter Status" />
               </div>
             </SelectTrigger>
-            <SelectContent className="bg-white border-slate-200 shadow-xl rounded-xl">
+            <SelectContent className="bg-white border-slate-200 shadow-2xl rounded-2xl">
               {STATUS_FILTERS.map((f) => (
-                <SelectItem key={f.value} value={f.value} className="focus:bg-slate-50 font-semibold">{f.label}</SelectItem>
+                <SelectItem key={f.value} value={f.value} className="focus:bg-indigo-50 font-bold py-3 px-4">{f.label}</SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
       </div>
 
-      <div className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden">
-        <div className="hidden lg:grid grid-cols-12 px-6 py-4 text-[11px] font-bold uppercase tracking-widest text-slate-400 bg-slate-50/50 border-b border-slate-200">
-          <div className="col-span-2">Order / Date</div>
-          <div className="col-span-2">Customer</div>
-          <div className="col-span-4 text-center">Delivery Address</div>
-          <div className="col-span-2">Items</div>
-          <div className="col-span-2 text-right">Status & Action</div>
-        </div>
-
-        <div className="divide-y divide-slate-100">
-          {loading ? (
-            <div className="p-6 space-y-4">
-              {Array.from({ length: 5 }).map((_, i) => <Skeleton key={i} className="h-24 w-full rounded-2xl" />)}
-            </div>
-          ) : filtered.length === 0 ? (
-            <div className="py-24 text-center">
-              <Package className="h-16 w-16 text-slate-200 mx-auto mb-4" />
-              <p className="text-slate-400 font-bold text-lg">No active orders</p>
-            </div>
-          ) : (
-            <AnimatePresence mode="popLayout">
-              {filtered.map((order) => {
-                const nextStatuses = NEXT_STATUSES[order.status] ?? [];
-                return (
-                  <motion.div
-                    key={order.id} layout initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-                    className="grid grid-cols-1 lg:grid-cols-12 gap-6 px-6 py-8 items-start hover:bg-slate-50/50 transition-colors"
-                  >
-                    {/* Order Reference */}
-                    <div className="lg:col-span-2">
-                      <div className="font-mono font-bold text-indigo-600 text-sm tracking-tighter">
-                        #{order.id.slice(-8).toUpperCase()}
+      {/* Ledger List */}
+      <div className="space-y-4">
+        {loading ? (
+          <div className="space-y-4">
+            {Array.from({ length: 3 }).map((_, i) => <Skeleton key={i} className="h-48 w-full rounded-[2rem]" />)}
+          </div>
+        ) : filtered.length === 0 ? (
+          <div className="py-32 text-center bg-white rounded-[3rem] border border-dashed border-slate-200">
+            <Package className="h-16 w-16 text-slate-200 mx-auto mb-4" />
+            <p className="text-slate-400 font-black text-xl">No orders found in this category</p>
+          </div>
+        ) : (
+          <AnimatePresence mode="popLayout">
+            {filtered.map((order) => {
+              const nextStatuses = NEXT_STATUSES[order.status] ?? [];
+              return (
+                <motion.div
+                  key={order.id} layout initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+                  className="bg-white border border-slate-100 rounded-[2.5rem] p-8 lg:p-10 shadow-sm hover:shadow-md transition-all group"
+                >
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    {/* 1. Customer & ID Block */}
+                    <div className="lg:col-span-3 space-y-4 border-b lg:border-b-0 lg:border-r border-slate-100 pb-6 lg:pb-0 pr-0 lg:pr-8">
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono font-black text-indigo-600 bg-indigo-50 px-3 py-1 rounded-lg text-xs">
+                          #{order.id.slice(-8).toUpperCase()}
+                        </span>
+                        <Badge variant="outline" className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
+                          {formatDate(order.createdAt)}
+                        </Badge>
                       </div>
-                      <div className="text-[11px] font-bold text-slate-400 mt-1 uppercase tracking-tight">
-                        {formatDate(order.createdAt)}
-                      </div>
-                    </div>
-
-                    {/* Customer */}
-                    <div className="lg:col-span-2">
-                      <p className="text-sm font-black text-slate-900 leading-tight">
-                        {order.customer?.name ?? "Guest User"}
-                      </p>
-                      <p className="text-[10px] font-bold text-slate-400 mt-1 truncate">{order.customer?.email}</p>
-                    </div>
-
-                    {/* Delivery Address - Centralized and Boxed */}
-                    <div className="lg:col-span-4">
-                      <div className="bg-indigo-50/50 p-4 rounded-xl border border-indigo-100/50 flex gap-3">
-                        <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0 text-indigo-500" />
+                      <div className="flex items-center gap-4">
+                        <div className="h-14 w-14 rounded-2xl bg-slate-900 flex items-center justify-center text-white text-xl font-black shadow-inner">
+                          {order.customer?.name?.[0] || "?"}
+                        </div>
                         <div>
-                           <p className="text-[12px] font-bold text-slate-700 leading-relaxed">
-                            {order.shippingAddress || "Standard Pickup"}
-                          </p>
+                          <p className="text-lg font-black text-slate-900">{order.customer?.name || "Guest"}</p>
+                          <p className="text-xs font-bold text-slate-400 truncate">{order.customer?.email}</p>
                         </div>
                       </div>
                     </div>
 
-                    {/* Items - Secondary but clear */}
-                    <div className="lg:col-span-2">
-                      <div className="space-y-1.5 pt-1">
+                    {/* 2. Shipping - LARGE TEXT */}
+                    <div className="lg:col-span-4 space-y-2">
+                      <div className="flex items-center gap-2 text-indigo-500">
+                        <MapPin className="h-4 w-4" />
+                        <span className="text-[10px] font-black uppercase tracking-widest">Shipping Address</span>
+                      </div>
+                      <p className="text-base font-bold text-slate-700 leading-relaxed lg:pr-6">
+                        {order.shippingAddress || "Standard Store Pickup"}
+                      </p>
+                    </div>
+
+                    {/* 3. Purchase - HIGH VISIBILITY */}
+                    <div className="lg:col-span-3 space-y-3">
+                      <div className="flex items-center gap-2 text-slate-400">
+                        <ShoppingBag className="h-4 w-4" />
+                        <span className="text-[10px] font-black uppercase tracking-widest">Order Summary</span>
+                      </div>
+                      <div className="space-y-1.5">
                         {order.orderItems.map((i) => (
-                          <div key={i.id} className="text-[11px] text-slate-500 font-medium">
-                            <span className="text-slate-900 font-black mr-1">{i.quantity}x</span> 
-                            {i.medicine.name}
+                          <div key={i.id} className="flex items-center justify-between text-sm">
+                            <span className="font-bold text-slate-800">
+                              <span className="text-indigo-600 mr-2">{i.quantity}x</span> 
+                              {i.medicine.name}
+                            </span>
                           </div>
                         ))}
                       </div>
+                      <p className="text-2xl font-black text-slate-900 pt-1">
+                        {formatPrice(order.totalAmount)}
+                      </p>
                     </div>
 
-                    {/* Action & Status */}
-                    <div className="lg:col-span-2 flex flex-col items-end gap-3">
-                      <div className="flex flex-col items-end">
-                        <Badge className={cn(getStatusColor(order.status), "rounded-lg px-2.5 py-1 text-[10px] font-black uppercase border-none mb-1")}>
-                          {order.status}
-                        </Badge>
-                        <span className="font-black text-slate-900 text-sm">{formatPrice(order.totalAmount)}</span>
-                      </div>
-
+                    {/* 4. Action & Status */}
+                    <div className="lg:col-span-2 flex flex-col items-center lg:items-end gap-4">
+                      <Badge className={cn(getStatusColor(order.status), "rounded-xl px-5 py-2 text-[10px] font-black uppercase border-none shadow-sm w-full lg:w-auto text-center justify-center")}>
+                        {order.status}
+                      </Badge>
+                      
                       {nextStatuses.length > 0 ? (
                         <DropdownMenu>
-                          <DropdownMenuTrigger render={
-                            <Button variant="outline" className="h-10 w-full lg:w-32 rounded-xl text-xs font-bold border-slate-200 hover:border-indigo-200 hover:bg-indigo-50 hover:text-indigo-600 transition-all shadow-sm">
-                              {updatingId === order.id ? "Updating..." : "Update Status"}
-                              <ChevronDown className="ml-2 h-3 w-3" />
+                          <DropdownMenuTrigger>
+                            <Button 
+                              variant="outline" 
+                              className="h-14 w-full lg:w-36 rounded-2xl text-[11px] font-black uppercase border-slate-200 hover:border-indigo-500 hover:bg-indigo-50 hover:text-indigo-600 transition-all shadow-sm flex items-center justify-center gap-2"
+                            >
+                              Update Status
+                              <ChevronDown className="h-4 w-4" />
                             </Button>
-                          }/>
-                          <DropdownMenuContent align="end" className="bg-white rounded-xl border-slate-200 shadow-2xl min-w-[160px] p-1.5">
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end" className="bg-white rounded-2xl border-slate-200 shadow-2xl min-w-[200px] p-2 z-[100]">
                             {nextStatuses.map((status) => (
                               <DropdownMenuItem
                                 key={status}
-                                className="text-xs font-bold py-2.5 px-3 rounded-lg focus:bg-indigo-50 focus:text-indigo-600 cursor-pointer mb-1 last:mb-0"
+                                className="text-[11px] font-black uppercase py-4 px-5 rounded-xl focus:bg-indigo-50 focus:text-indigo-600 cursor-pointer mb-1 last:mb-0"
                                 onClick={() => handleStatusUpdate(order.id, status)}
                               >
                                 Move to {status}
@@ -227,18 +222,19 @@ export default function SellerOrdersPage() {
                           </DropdownMenuContent>
                         </DropdownMenu>
                       ) : (
-                        <div className="flex items-center gap-2 text-[10px] font-bold text-emerald-500 uppercase tracking-widest bg-emerald-50 px-4 py-2 rounded-xl border border-emerald-100">
-                          <CheckCircle2 className="h-4 w-4" />
-                          Processed
+                        <div className="h-14 w-full lg:w-36 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center gap-2 text-emerald-600">
+                          <CheckCircle2 className="h-5 w-5" />
+                          <span className="text-[11px] font-black uppercase">Complete</span>
                         </div>
                       )}
                     </div>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          )}
-        </div>
+
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        )}
       </div>
     </div>
   );
