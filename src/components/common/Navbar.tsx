@@ -152,8 +152,8 @@ export function Navbar() {
     </div>
   </DropdownMenuTrigger>
 
-  <DropdownMenuContent align="end" className="w-52">
-    <div className="px-3 py-2 border-b border-slate-100">
+  <DropdownMenuContent align="end" className="w-52 bg-white">
+    <div className="px-3 py-2 border-b border-slate-100 ">
       <p className="text-sm font-medium truncate">{user.name}</p>
 
       <p className="text-xs text-muted-foreground truncate">
