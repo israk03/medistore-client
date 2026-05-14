@@ -200,14 +200,11 @@ export default function SellerOrdersPage() {
                       
                       {nextStatuses.length > 0 ? (
                         <DropdownMenu>
-                          <DropdownMenuTrigger>
-                            <Button 
-                              variant="outline" 
-                              className="h-14 w-full lg:w-36 rounded-2xl text-[11px] font-black uppercase border-slate-200 hover:border-indigo-500 hover:bg-indigo-50 hover:text-indigo-600 transition-all shadow-sm flex items-center justify-center gap-2"
-                            >
+                          <DropdownMenuTrigger className="h-14 w-full lg:w-36 rounded-2xl text-[11px] font-black uppercase border-slate-200 hover:border-indigo-500 hover:bg-indigo-50 hover:text-indigo-600 transition-all shadow-sm flex items-center justify-center gap-2">
+                            
                               Update Status
                               <ChevronDown className="h-4 w-4" />
-                            </Button>
+                            
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end" className="bg-white rounded-2xl border-slate-200 shadow-2xl min-w-50 p-2 z-100">
                             {nextStatuses.map((status) => (
