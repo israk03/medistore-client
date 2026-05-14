@@ -1,7 +1,7 @@
 import { DashboardSidebar } from "@/components/layout/DashboardSidebar";
 import { DashboardHeader } from "@/components/layout/DashboardHeader";
 import { AuthGuard } from "@/components/auth/AuthGuard";
-import { RoleSlotPicker } from "@/components/auth/RoleSlotPicker"; // We will create this
+import { RoleSlotPicker } from "@/components/auth/RoleSlotPicker"; 
 
 type DashboardLayoutProps = {
   admin: React.ReactNode;

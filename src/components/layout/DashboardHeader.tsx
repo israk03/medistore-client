@@ -48,16 +48,16 @@ export function DashboardHeader() {
     >
       {/* 1. Breadcrumb & Title Section */}
       <div className="flex items-center gap-4 pl-12 lg:pl-0">
-        <div className="hidden flex-col sm:flex">
-          <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-            <span>MediStore</span>
-            <ChevronRight className="h-2.5 w-2.5" />
-            <span className="text-indigo-500">Internal</span>
-          </div>
-          <h1 className="text-xl font-black tracking-tight text-slate-900">
-            {pageTitle}
-          </h1>
-        </div>
+        <div className="flex flex-col">
+  <div className="hidden items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 sm:flex">
+    <span>MediStore</span>
+    <ChevronRight className="h-2.5 w-2.5" />
+    <span className="text-indigo-500">Internal</span>
+  </div>
+  <h1 className="text-xl font-black tracking-tight text-slate-900">
+    {pageTitle}
+  </h1>
+</div>
       </div>
 
       {/* 2. Utility & User Section */}
@@ -68,20 +68,7 @@ export function DashboardHeader() {
           <span className="text-xs font-bold text-slate-500">{today}</span>
         </div>
 
-        {/* Search & Notifications */}
-        <div className="flex items-center gap-2 pr-2">
-          <button className="group flex h-10 w-10 items-center justify-center rounded-2xl bg-white border border-slate-200 transition-all hover:border-indigo-200 hover:shadow-lg hover:shadow-indigo-50">
-            <Search className="h-4 w-4 text-slate-400 group-hover:text-indigo-600" />
-          </button>
-
-          <button className="group relative flex h-10 w-10 items-center justify-center rounded-2xl bg-white border border-slate-200 transition-all hover:border-indigo-200 hover:shadow-lg hover:shadow-indigo-50">
-            <Bell className="h-4 w-4 text-slate-400 group-hover:text-indigo-600" />
-            <span className="absolute right-2.5 top-2.5 flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-rose-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-rose-500" />
-            </span>
-          </button>
-        </div>
+        
 
         {/* 3. Role-Aware Profile Section */}
         {user && (
