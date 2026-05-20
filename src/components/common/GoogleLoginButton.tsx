@@ -65,7 +65,7 @@ export function GoogleLoginButton({
         size: "large",
         text: "continue_with",
         shape: "rectangular",
-        logo_alignment: "left",
+        logo_alignment: "center",
         width: buttonRef.current.offsetWidth,
       });
     };
