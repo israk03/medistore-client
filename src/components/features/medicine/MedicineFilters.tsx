@@ -99,17 +99,18 @@ export function MedicineFilters({ filters, onChange }: MedicineFiltersProps) {
             exit={{ opacity: 0, y: -10 }}
             className="p-6 bg-white/80 backdrop-blur-md rounded-4xl border border-slate-100 shadow-xl shadow-indigo-100/20"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 ">
               {/* Category Dropdown */}
               <FilterGroup label="Therapeutic Category">
                 <Select
+                  
                   value={filters.categoryId}
                   onValueChange={(v) => onChange({ ...filters, categoryId: v ?? "ALL" })}
                 >
                   <SelectTrigger className="h-12 rounded-xl bg-slate-50/50 border-slate-100 focus:ring-indigo-600">
                     <SelectValue placeholder="All Categories" />
                   </SelectTrigger>
-                  <SelectContent className="rounded-xl border-slate-100">
+                  <SelectContent className="rounded-xl bg-white border-slate-100">
                     <SelectItem value="ALL">All Categories</SelectItem>
                     {categories.map((cat) => (
                       <SelectItem key={cat.id} value={cat.id}>{cat.name}</SelectItem>
@@ -149,7 +150,7 @@ export function MedicineFilters({ filters, onChange }: MedicineFiltersProps) {
                   <SelectTrigger className="h-12 rounded-xl bg-slate-50/50 border-slate-100">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="rounded-xl border-slate-100">
+                  <SelectContent className="rounded-xl border-slate-100 bg-white">
                     <SelectItem value="newest">Latest Arrivals</SelectItem>
                     <SelectItem value="price_asc">Price: Low to High</SelectItem>
                     <SelectItem value="price_desc">Price: High to Low</SelectItem>

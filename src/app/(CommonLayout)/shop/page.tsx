@@ -111,7 +111,7 @@ export default function ShopPage() {
               animate={{ opacity: 1, x: 0 }}
               className="space-y-2"
             >
-              <div className="flex items-center gap-2 text-indigo-600 font-bold text-sm uppercase tracking-widest">
+              <div className="mt-5 flex items-center gap-2 text-indigo-600 font-bold text-sm uppercase tracking-widest">
                 <ShoppingBag className="w-4 h-4" />
                 <span>Pharmacy Store</span>
               </div>
