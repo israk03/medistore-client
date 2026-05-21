@@ -33,6 +33,7 @@ import { Separator } from "@/components/ui/separator";
 import { useAuth } from "@/context/AuthContext";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { authService } from "@/services/auth.service";
 
 const profileSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters"),
@@ -48,7 +49,7 @@ const ROLE_CONFIG: Record<string, { color: string; icon: any }> = {
 };
 
 export default function ProfilePage() {
-  const { user } = useAuth();
+  const { user , updateUser} = useAuth();
   const [saving, setSaving] = useState(false);
 
   const form = useForm<ProfileFormValues>({
@@ -71,17 +72,24 @@ export default function ProfilePage() {
   if (!user) return null;
 
   const onSubmit = async (values: ProfileFormValues) => {
-    setSaving(true);
-    try {
-      // Simulate API sync with patient database
-      await new Promise((r) => setTimeout(r, 1200));
-      toast.success("Health Profile Synchronized");
-    } catch (err) {
-      toast.error("Profile update failed");
-    } finally {
-      setSaving(false);
+  setSaving(true);
+  try {
+    const res = await authService.updateProfile({
+      name: values.name,
+      email: values.email,
+    });
+
+    if (res.success && res.data) {
+      // Update AuthContext + localStorage so changes persist on reload
+      updateUser(res.data);
+      toast.success("Profile updated successfully");
     }
-  };
+  } catch (err: any) {
+    toast.error(err?.message || "Failed to update profile");
+  } finally {
+    setSaving(false);
+  }
+};
 
   const initial = user.name?.charAt(0)?.toUpperCase() ?? "U";
   const role = ROLE_CONFIG[user.role] || ROLE_CONFIG.CUSTOMER;

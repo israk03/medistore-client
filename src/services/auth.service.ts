@@ -59,4 +59,20 @@ export const authService = {
       throw new Error(getErrorMessage(err));
     }
   },
+    // UPDATE PROFILE
+  updateProfile: async (data: {
+    name?: string;
+    email?: string;
+  }) => {
+    try {
+      const res = await axiosInstance.patch(
+        "/auth/profile",
+        data
+      );
+
+      return res.data;
+    } catch (err: any) {
+      throw new Error(getErrorMessage(err));
+    }
+  },
 };

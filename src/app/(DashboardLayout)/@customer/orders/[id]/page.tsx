@@ -93,7 +93,7 @@ export default function OrderDetailPage() {
     );
   }
 
-  if (!order) return null; // Handle not found redirect in useEffect/Guard
+  if (!order) return null; 
 
   return (
     <div className="min-h-screen bg-slate-50/50 pb-20 pt-20">
@@ -185,7 +185,7 @@ export default function OrderDetailPage() {
                   disabled={cancelling}
                   className="mt-4 rounded-xl border-rose-100 font-bold text-rose-500 hover:bg-rose-50 sm:mt-0"
                 >
-                  {cancelling ? "Processing..." : "Void Order"}
+                  {cancelling ? "Processing..." : "Cancel order"}
                 </Button>
               )}
             </div>
