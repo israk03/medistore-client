@@ -124,7 +124,7 @@ export function DashboardSidebar() {
             <div className="flex items-center gap-3">
               <div
                 className={cn(
-                  "h-10 w-10 rounded-full flex items-center justify-center text-white font-bold",
+                  "h-10 w-10 rounded-full flex bg-indigo-600 items-center justify-center text-white font-bold",
                   currentTheme.gradient
                 )}
               >
