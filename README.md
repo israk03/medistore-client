@@ -1,36 +1,197 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MediStore — Online OTC Medicine Platform
 
-## Getting Started
+> A full-stack, multi-role e-commerce platform for purchasing over-the-counter medicines. Built with **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS v4**, and **shadcn/ui**.
 
-First, run the development server:
+---
+
+## 🔗 Live Demo & Backend
+
+| Resource | Link |
+|---|---|
+| 🌐 Live Site | [medistore-client](https://medistore-client-sand.vercel.app/) |
+| 🔧 Backend Repository | [medistore-server](https://github.com/israk03/medistore-server) |
+
+---
+
+
+## ✨ Features
+
+### 🛍️ Customer
+- Browse medicines by category
+- Search and filter products
+- Add to cart and place orders
+- Leave reviews and ratings
+- View personal order history
+
+### 🏪 Seller
+- List and manage medicine inventory
+- Upload medicine images
+- Track incoming orders
+- View sales dashboard
+
+### 🛡️ Admin
+- Manage all users (customers & sellers)
+- Approve/reject seller listings
+- Monitor platform-wide orders
+- Category management
+
+### 🔐 Authentication
+- JWT-based authentication with access & refresh token flow
+- Google OAuth login via `@react-oauth/google`
+- Role-based access control (RBAC): `ADMIN`, `SELLER`, `CUSTOMER`
+- Axios interceptor for auto-attaching tokens to requests
+
+---
+
+## 🧱 Tech Stack
+
+| Category | Technology |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| UI Components | shadcn/ui, Radix UI |
+| Forms | React Hook Form + Zod |
+| HTTP Client | Axios (with JWT interceptor) |
+| Animations | Framer Motion |
+| Icons | Lucide React, React Icons |
+| Notifications | Sonner |
+| Auth | JWT + Google OAuth |
+| Font | Geist (via `next/font`) |
+
+---
+
+## 🗂️ Project Structure
+
+```
+src/
+├── app/
+│   ├── (auth)/               # Login, Register pages
+│   ├── (public)/             # Public-facing routes (home, medicines, etc.)
+│   ├── @admin/               # Parallel route slot — Admin dashboard
+│   ├── @seller/              # Parallel route slot — Seller dashboard
+│   ├── @customer/            # Parallel route slot — Customer dashboard
+│   ├── layout.tsx            # Root layout with providers
+│   └── page.tsx              # Homepage
+│
+├── components/
+│   ├── ui/                   # shadcn/ui base components
+│   ├── shared/               # Navbar, Footer, etc.
+│   └── [feature]/            # Feature-specific components
+│
+├── lib/
+│   ├── axios.ts              # Axios instance with JWT interceptor
+│   └── utils.ts              # cn() and shared utilities
+│
+├── types/                    # Shared TypeScript types/interfaces
+└── hooks/                    # Custom React hooks
+```
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+- Node.js `v18+`
+- npm or yarn
+- The [MediStore backend server](https://github.com/israk03/medistore-server) running locally
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/israk03/medistore-client.git
+cd medistore-client
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```env
+NEXT_PUBLIC_API_BASE_URL=http://localhost:5000/api/v1
+NEXT_PUBLIC_GOOGLE_CLIENT_ID=your_google_oauth_client_id
+```
+
+### 4. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔑 Test Credentials
 
-## Learn More
+| Role | Email | Password |
+|---|---|---|
+| Admin | `admin@medistore.com` | `admin123` |
+| Seller | `seller@medistore.com` | `seller123` |
+| Customer | `user@medistore.com` | `user123` |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev       # Start development server with Turbopack
+npm run build     # Create production build
+npm run start     # Start production server
+npm run lint      # Run ESLint
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🏗️ Architecture Highlights
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Parallel Route Slots for Role-Based Dashboards
+
+Next.js 15 parallel routes (`@admin`, `@seller`, `@customer`) power the multi-role dashboard system, rendering the correct dashboard UI based on the authenticated user's role without full page navigation.
+
+### JWT Interceptor with Axios
+
+A centralized Axios instance handles token attachment and refresh logic automatically, so every protected API call is authenticated without manual token management in each component.
+
+### Server-Side & Client-Side Rendering
+
+- Public pages (medicine listings, homepage) use **SSR** for SEO and fast initial load.
+- Dashboard pages use **CSR** with client components for real-time interaction.
+
+---
+
+## 🚀 Deployment
+
+This project is optimized for deployment on [Vercel](https://vercel.com):
+
+1. Push your code to GitHub.
+2. Import the repository on Vercel.
+3. Add environment variables in the Vercel dashboard.
+4. Deploy.
+
+---
+
+## 🤝 Contributing
+
+This is a personal portfolio project. Feedback and suggestions are welcome — feel free to open an issue.
+
+---
+
+## 👤 Author
+
+**Israk**
+- GitHub: [@israk03](https://github.com/israk03)
+- 4th Year CSE Student | Full Stack Developer
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
